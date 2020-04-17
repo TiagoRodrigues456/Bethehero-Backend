@@ -15,39 +15,34 @@ module.exports = {
   },
 
   staging: {
-    client: 'postgresql',
+    client: 'sqlite3',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      filename: './src/database/db.sqlite'
     },
-    pool: {
-      min: 2,
-      max: 10
+    migrations : {
+      directory : './src/database/migrations'
     },
-    migrations: {
-      tableName: 'knex_migrations'
+
+    useNullAsDefault : true
     },
     
-  },
 
   production: {
-    client: 'postgresql',
+    client: 'sqlite3',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      filename: './src/database/db.sqlite'
     },
-    pool: {
-      min: 2,
-      max: 10
+    migrations : {
+      directory : './src/database/migrations'
     },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
 
-};
+    useNullAsDefault : true
+    }
+
+  }
+  
+
+
 
 
 // knex migrate:latest --- comando criar table
