@@ -1,1 +1,5 @@
-'mongodb+srv://tiago:<password>@cluster0-40jq1.mongodb.net/test?retryWrites=true&w=majority'
+const knex = require('knex');
+const configuration = require('../../knexfile');
+
+const connection = knex(configuration.development);
+module.exports = connection;
