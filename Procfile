@@ -1,2 +1,2 @@
 web: npm start
-     npx knex migrate:latest
+web:   npx knex migrate:latest
