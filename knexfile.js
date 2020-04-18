@@ -1,48 +1,37 @@
-// Update with your config settings.
+require('dotenv').config();
 
 module.exports = {
-
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './src/database/db.sqlite'
-    },
-    migrations : {
-      directory : './src/database/migrations'
-    },
+    client: 'pg',
 
-    useNullAsDefault : true
+    connection: {
+      database: 'postgres',
+      user:     'postgres',
+      password: 'postgres'
+    },
+    migrations: {
+      directory: './src/database/migrations',
+    },
+    // seeds: { directory: './src/database/seeds' },
   },
 
-  staging: {
-    client: 'sqlite3',
-    connection: {
-      filename: './src/database/db.sqlite'
+  testing: {
+    client: 'pg',
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: './src/database/migrations',
     },
-    migrations : {
-      directory : './src/database/migrations'
-    },
-
-    useNullAsDefault : true
-    },
-    
+    seeds: { directory: './src/database/seeds' },
+  },
 
   production: {
-    client: 'sqlite3',
-    connection: {
-      filename: './src/database/db.sqlite'
+    client: 'pg',
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: './src/database/migrations',
     },
-    migrations : {
-      directory : './src/database/migrations'
-    },
-
-    useNullAsDefault : true
-    }
-
+    seeds: { directory: './src/database/seeds' },
   }
-  
-
-
-
+};
 
 // knex migrate:latest --- comando criar table
